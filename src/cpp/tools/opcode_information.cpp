@@ -429,7 +429,7 @@ AIEDebug::decode_opcode(uint32_t uc_idx, uint32_t page_idx,
   if (is_merged) {
     const size_t page_base = static_cast<size_t>(page_idx) * k_page_length;
     instr_start = page_base + k_binary_page_header_size;
-    region_end  = std::min(sec_size, page_base + k_page_length);
+    region_end  = std::min<size_t>(sec_size, page_base + k_page_length);
   } else {
     instr_start = k_binary_page_header_size;
     region_end  = sec_size;

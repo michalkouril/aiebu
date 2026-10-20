@@ -7,6 +7,13 @@ if (${CMAKE_SYSTEM_NAME} STREQUAL "Linux")
     BYPRODUCTS ${CMAKE_CURRENT_BINARY_DIR}/markdown_graphviz_svg.py
     WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
     )
+elseif (APPLE)
+  add_custom_target(spec-tool-deps
+    COMMAND curl -sL -o markdown_graphviz_svg.py
+    https://raw.githubusercontent.com/Tanami/markdown-graphviz-svg/master/src/markdown_graphviz_svg/markdown_graphviz_svg.py
+    BYPRODUCTS ${CMAKE_CURRENT_BINARY_DIR}/markdown_graphviz_svg.py
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+    )
 else()
   add_custom_target(spec-tool-deps
     COMMAND powershell wget -O markdown_graphviz_svg.py

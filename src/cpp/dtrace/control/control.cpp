@@ -12,6 +12,9 @@
 
 #ifdef _WIN32
 #define htole32(x) (x)
+#elif defined(__APPLE__)
+#include <libkern/OSByteOrder.h>
+#define htole32(x) OSSwapHostToLittleInt32(x)
 #else
 #include <endian.h>
 #endif
